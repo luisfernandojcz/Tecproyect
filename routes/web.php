@@ -21,9 +21,16 @@ Route::resource('admin/products', 'ProductController')->names('products');
 Route::post('/comment/store','CommetController@store')->name('comment.add');
 Route::post('/reply/store','CommetController@replyStore')->name('reply.add');
 
+Route::post('/commentProduct/store','CommetController@productStore')->name('productComment.add');
+Route::post('/replyProduct/store','CommetController@productReplyStore')->name('productReply.add');
+
+
 Route::delete('/reply/destroy/{commet}','CommetController@destroy')->name('comment.destroy');
 Route::get('/reply/{commet}/edit','CommetController@edit')->name('comment.edit');
 Route::put('/reply/{commet}','CommetController@update')->name('comment.update');
+
+
+
 
 
 Route::get('/', function () {

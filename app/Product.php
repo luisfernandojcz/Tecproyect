@@ -26,6 +26,6 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
     public function comments(){
-        return $this->morphMany(Commet::class, 'commentable')->whereNull('parent_id');
+        return $this->morphMany(Commet::class, 'commentable')->whereNull('parent_id')->orderBy('id','DESC');
     }
 }

@@ -13,10 +13,10 @@
  * (1) https://ckeditor.com/cke4/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/ef1be7f91be0015099c247d5ee8906af
+ * (2) https://ckeditor.com/cke4/builder/4e3a4ca28d8cb0c407b480601a63d4b6
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/ef1be7f91be0015099c247d5ee8906af
+ * (3) https://ckeditor.com/cke4/builder/download/4e3a4ca28d8cb0c407b480601a63d4b6
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -39,7 +39,6 @@ var CKBUILDER_CONFIG = {
 		'.jshintrc',
 		'.mailmap',
 		'.npm',
-		'.nvmrc',
 		'.travis.yml',
 		'bender-err.log',
 		'bender-out.log',
@@ -49,7 +48,6 @@ var CKBUILDER_CONFIG = {
 		'gruntfile.js',
 		'less',
 		'node_modules',
-		'package-lock.json',
 		'package.json',
 		'tests'
 	],
@@ -66,12 +64,9 @@ var CKBUILDER_CONFIG = {
 		'copyformatting' : 1,
 		'dialogadvtab' : 1,
 		'div' : 1,
-		'easyimage' : 1,
-		'editorplaceholder' : 1,
 		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
-		'exportpdf' : 1,
 		'filebrowser' : 1,
 		'find' : 1,
 		'flash' : 1,

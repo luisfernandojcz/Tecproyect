@@ -28,7 +28,16 @@
 				<tr>
 					<td scope="row">{{$product->id}}</td>
 					<td>{{$product->name}}</td>
-					<td>{{$product->status}}</td>
+
+					@if ($product->status == 'DRAFT')
+					<td>
+						<small class="badge badge-danger"><i class="fas fa-times"></i> Borrador</small>
+					</td>
+					@else
+					<td>
+						<small class="badge badge-success"><i class="fas fa-check"></i> Publicado</small>
+					</td>
+					@endif
 					<td width="10px">
 						<a class="btn btn-default btn-sm" href="{{route('products.show', $product->id)}}">
 							<i class="fas fa-eye"></i>

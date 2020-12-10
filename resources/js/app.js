@@ -4,7 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 
 window.Vue = require('vue');
 
@@ -27,6 +26,52 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+const apiproduct = new Vue({
+    el: '#apiproduct',
+    methods:{
+        eliminarimagen(image){
+            Swal.fire({
+                title: '¿Estas seguro de eliminar la image ' + image.id + '?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, Eliminar!',
+                cancelButtonText: 'Cancelar'
+              }).then(function (result) {
+                if (result.value) {
+                  var url = '/api/eliminarimagen/' + image.id;
+                  axios["delete"](url).then(function (response) {
+                    console.log(response.data);
+                  });
+                  var elemento = document.getElementById('idimagen-' + image.id);
+                  elemento.parentNode.removeChild(elemento);
+                  Swal.fire('¡Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+                }
+              });
+        }
+    }
 });
+
+
+
+
+
+Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })

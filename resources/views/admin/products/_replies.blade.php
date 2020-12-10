@@ -17,9 +17,9 @@
        @endif
       </h5>
       {{$comment->body}}
-      {!! Form::open(['route'=>'reply.add', 'method'=>'POST']) !!}
+      {!! Form::open(['route'=>'productReply.add', 'method'=>'POST']) !!}
       <div class="form-group">
-        <input type="hidden" name="post_id" value="{{$post->id}}">
+        <input type="hidden" name="product_id" value="{{$product->id}}">
         <input type="hidden" name="comment_id" value="{{$comment->id}}">
         @if ($comment->parent_id == null)
           <textarea class="form-control" name="body" rows="2"></textarea>
@@ -47,12 +47,12 @@
           {!! Form::close() !!}
         </div>
       </div>
-      @include('admin.posts._replies',['comments'=>$comment->replies])
+      @include('admin.products._replies',['comments'=>$comment->replies])
     </div>
 </div>
 @endforeach
 
 @if (isset($comment->replies))
-  @include('admin.posts.partials._editComments',['comments'=>$comment->replies])
+  @include('admin.products.partials._editComments',['comments'=>$comment->replies])
 @endif
 

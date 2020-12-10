@@ -32,11 +32,11 @@
                       <img  src="{{$image->url}}" class="img-fluid mb-2"/>                                   
                     </a>
                     <br>
-                    <a class="texto-encima" href="{{$image->url}}"
+                    <button class="texto-encima" href="{{$image->url}}"
                       v-on:click.prevent="eliminarimagen({{$image}})"
                       >
-                      <i class="fas fa-trash-alt" style="color: white"></i>
-                    </a>
+                      <i class="fas fa-trash-alt" style="color: rgb(0, 0, 0)"></i>
+                    </button>
                   </div>
                   @endforeach
                 </div>

@@ -7,7 +7,7 @@
 @section('title','Detalles producto')
 @section('breadcrumb')
 <li class="breadcrumb-item active">
-	<a href="{{route('products.index')}}">Publicaciones</a>
+	<a href="{{route('products.index')}}">Productos</a>
 </li>
 <li class="breadcrumb-item active">@yield('title')</li>
 @endsection
@@ -19,22 +19,22 @@
 	<div class="card-body ">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <div id="slider" class="owl-carousel product-slider">
-            @foreach ($product->images as $image)
-              <div class="item">
-                <img src="{{$image->url}}" />
-              </div>
-            @endforeach
-      </div>
-      <div id="thumb" class="owl-carousel product-thumb">
-        @foreach ($product->images as $image)
-          <div class="item">
-            <img src="{{$image->url}}" />
-          </div>
-        @endforeach
-      </div>
+      <div class="col-md-6">
+        <div id="slider" class="owl-carousel product-slider">
+              @foreach ($product->images as $image)
+                <div class="item">
+                  <img src="{{$image->url}}" />
+                </div>
+              @endforeach
         </div>
+        <div id="thumb" class="owl-carousel product-thumb">
+          @foreach ($product->images as $image)
+            <div class="item">
+              <img src="{{$image->url}}" />
+            </div>
+          @endforeach
+        </div>
+      </div>
         <div class="col-md-6">
           <div class="product-dtl">
             <div class="product-info">
@@ -99,8 +99,22 @@
           {!! htmlspecialchars_decode($product->longDescription) !!}
         </div>
         <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="review-tab">
-          <div class="review-heading">Comentarios </div>
-          <p class="mb-20">There are no reviews yet.</p>
+          <div class="card my-4">
+            <h5 class="card-header">Deja un comentario:</h5>
+            <div class="card-body">
+              
+              {!! Form::open(['route'=>'productComment.add', 'method'=>'POST']) !!}
+                <div class="form-group">
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
+                  <textarea class="form-control" name="body" rows="3"></textarea>
+                </div>
+                
+                <input type="submit" class="btn btn-primary" value="Enviar">
+              {!! Form::close() !!}
+            </div>
+          </div>
+      
+      @include('admin.products._replies',['comments'=>$product->comments, 'product_id'=>$product->id])
         </div>
     </div>
     </div>
